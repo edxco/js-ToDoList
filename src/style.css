@@ -1,0 +1,59 @@
+
+@tailwind base;
+@tailwind components;
+
+.column1 {
+    float: left;
+    width: 390px;
+}
+
+.column2 {
+    width: auto;
+}
+
+.row::after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+.modal {
+    /*display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 100; /* Sit on top */
+    padding-top: 100px; /* Location of the box */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+.taskBtn {
+    @apply flex mx-auto text-white bg-blue-300 border-0 py-2 px-8 hover:bg-blue-500 rounded text-lg;
+}
+
+.addProjectBtn {
+    @apply px-8 py-2 font-semibold text-white transition duration-500 ease-in-out transform rounded-lg focus:outline-none focus:ring-2 ring-offset-current ring-offset-2;
+}
+
+.addProjectForm {
+    @apply flex flex-col bg-white w-full p-8 mx-auto mt-10 border rounded-lg lg:w-2/6 md:w-1/2 md:ml-auto md:mt-0;
+}
+
+.addProjectInput {
+    @apply w-full px-4 py-2 mb-4 text-black bg-gray-100 border-transparent rounded-lg mr-4 text-base;
+}
+
+.addTaskInput {
+    @apply w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out;
+}
+
+.btnAddTask {
+    @apply flex mx-auto text-white bg-yellow-500 border-0 py-2 px-8 focus:outline-none hover:bg-yellow-600 rounded text-lg;
+}
+
+@tailwind utilities;
+
