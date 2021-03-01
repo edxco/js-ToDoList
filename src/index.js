@@ -7,6 +7,7 @@ import showHide from './js/showHide';
 import taskNoSelection from './js/taskNoSelection';
 import taskDisplay from './js/taskDisplay';
 import taskAddForm from './js/taskAddForm';
+import projectAddFormValidation from './js/projectAddFormValidation';
 
 // Global variables
 let currentProject;
@@ -16,7 +17,8 @@ let {
     projectAddFormDiv,
     projectAddFormSubmit,
     projectAddFormCancel,
-    projectAddFormInput
+    projectAddFormInput,
+    projectFieldValidation
 } = projectAddForm();
 
 let {
@@ -50,6 +52,12 @@ const showAddProjectForm = () => {
 
 const addProject = () => {
     let name = projectAddFormInput.value;
+    let x = projectAddFormValidation(name);
+    console.log('x: ', x, typeof x)
+    if (x != '') {
+        projectFieldValidation.textContent = `${x}`;
+        showHide(projectFieldValidation);
+    } else {
     localStorage.setItem(name, '');
     projectAddFormDiv.style.display = 'none';
     projectAddFormInput.value = '';
@@ -57,6 +65,7 @@ const addProject = () => {
     projectListCont.innerHTML = '';
     projectListCont.append(projectList());
     clickEachProject();
+    }
 };
 
 const taskContainer = (currentProject) => {
