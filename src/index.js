@@ -156,6 +156,8 @@ const clickEachProject = () => {
 }
 
 const taskItemDelete = (e) => {
+    const confirm = window.confirm('Are you sure you want to delete this Task?');
+    if(confirm){
     const deleteElement = e.target;
     const delkey = deleteElement.getAttribute('key');
     const deletePos = deleteElement.getAttribute('position');
@@ -164,7 +166,8 @@ const taskItemDelete = (e) => {
     existingEntries.splice(deletePos, 1);
     existingEntries = JSON.stringify(existingEntries);
     localStorage.setItem(delkey, existingEntries);
-    // selectProject();
+
+    }
     taskContainer(currentProject);
     btnAddTask();
     taskDelBtn();
@@ -172,11 +175,9 @@ const taskItemDelete = (e) => {
 }
 
 const taskItemEdit = (e) => {
-    console.log('Im in Edit')
     const editElement = e.target;
     const editkey = editElement.getAttribute('key');
     const editPos = editElement.getAttribute('position');
-
     let taskValues = JSON.parse(localStorage.getItem(editkey));
     showAddTaskForm('Edit Task');
     taskAddInput1.value = taskValues[+editPos].task;
@@ -185,15 +186,6 @@ const taskItemEdit = (e) => {
     taskAddSelect.value = taskValues[+editPos].priority;
     currentTaskPosition = editPos;
     currentTasKey = editkey;
-
-    // let existingEntries = JSON.parse(localStorage.getItem(delkey));
-    // existingEntries.splice(deletePos, 1);
-    // existingEntries = JSON.stringify(existingEntries);
-    // localStorage.setItem(delkey, existingEntries);
-    // // selectProject();
-    // taskContainer(currentProject);
-    // btnAddTask();
-    // taskDelBtn();
 }
 
 const taskDelBtn = () => {
