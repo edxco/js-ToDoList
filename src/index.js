@@ -112,20 +112,18 @@ const taskAddNew = () => {
         console.log('Do stuff for edit task')
     } else {
         console.log('Do stuff for add task')
-        // console.log('taskObj', taskObj)
-        // let task = TaskValues(taskAddInput1.value, taskAddInput2.value, taskAddInput3.value, taskAddSelect.value);
-        // console.log('task', task)
-        // taskObj.push(task);
-        // console.log('taskObj after push', taskObj)
-        // localStorage.setItem(currentProject, JSON.stringify(taskObj));
-        // clearProjectForm();
-        // taskContainer(currentProject);
-        // btnAddTask();
-        // taskDelBtn();
-        // taskEditBtn();
+        console.log('taskObj', taskObj)
+        let task = TaskValues(taskAddInput1.value, taskAddInput2.value, taskAddInput3.value, taskAddSelect.value);
+        console.log('task', task)
+        taskObj.push(task);
+        console.log('taskObj after push', taskObj)
+        localStorage.setItem(currentProject, JSON.stringify(taskObj));
+        clearProjectForm();
+        taskContainer(currentProject);
+        btnAddTask();
+        taskDelBtn();
+        taskEditBtn();
     }
-
-
 };
 
 const selectProject = (e) => {

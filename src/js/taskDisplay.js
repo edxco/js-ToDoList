@@ -40,8 +40,8 @@ const taskDisplay = (currentProject) => {
             const taskLeft = document.createElement('div');
             taskLeft.className = 'flex self-center';
 
-            priority = storage[i].priority
-            let color = changeColor(priority);
+            let color = changeColor(storage[i].priority);
+
             const taskLeft1 = document.createElement('div');
             taskLeft1.className = 'flex flex-col md:flex-row self-center';
             const status1 = document.createElement('div');
@@ -90,42 +90,6 @@ const taskDisplay = (currentProject) => {
             task3.append(task3p);
 
             taskRight.append(taskRight1, taskRightEdit, taskRightDel);
-
-
-            // span1.textContent = storage[i].priority;
-            // const span2 = document.createElement('span');
-            // span2.className = 'mt-1 text-gray-500 text-sm';
-            // span2.textContent = storage[i].date;
-
-            // const actions = document.createElement('div');
-            // actions.className = 'mt-3 flex text-sm font-semibold';
-            // const edit = document.createElement('div');
-            // edit.className = 'text-gray-600 cursor-pointer';
-            // edit.textContent = 'Edit';
-            // const separator = document.createElement('div');
-            // separator.className = 'mx-3';
-            // separator.textContent = '|';
-            // const erase = document.createElement('div');
-            // erase.className = 'text-red-600 cursor-pointer deleteBtnTask';
-            // erase.textContent = 'Delete'
-            // erase.setAttribute('key', currentProject);
-            // erase.setAttribute('position', i);
-
-            // const div4 = document.createElement('div');
-            // div4.className = 'md:flex-grow';
-            // const h1 = document.createElement('h2');
-            // h1.className = 'text-2xl font-medium text-blue-800 title-font mb-2';
-            // h1.textContent = storage[i].task;
-            // const p = document.createElement('p');
-            // p.className = 'leading-relaxed';
-            // p.textContent = storage[i].description;
-
-            // divList.append(div2);
-            // div2.append(div3, div4);
-            // div3.append(span1, span2, actions);
-            // actions.append(edit, separator, erase);
-            // div4.append(h1, p);
-
         }
     }
     mainList.append(div11, divList);
@@ -138,11 +102,11 @@ const changeColor = (priority) => {
     let color = [];
     switch (priority) {
         case 'Important':
-            color[0] = 'self-center rounded-full mb-1 h-4 w-4 border border-red-600 bg-red-100 ml-1 md:ml-3 mr-1.5';
+            color[0] = 'self-center rounded-full mb-1 h-4 w-4 bg-red-100 ml-1 md:ml-3 mr-1.5 border border-red-600';
             color[1] = 'w-10 self-center font-semibold text-red-800 text-xs h-5 hidden md:block md:mr-10';
             return color;
         case 'Normal':
-            color[0] = 'self-center rounded-full mb-1 h-4 w-4 border border-green-600 bg-green-100 ml-1 md:ml-3 mr-1.5';
+            color[0] = 'self-center rounded-full mb-1 h-4 w-4 bg-green-100 ml-1 md:ml-3 mr-1.5 border border-green-600';
             color[1] = 'w-10 self-center font-semibold text-green-800 text-xs h-5 hidden md:block md:mr-10';
             return color;
         case 'Low':
