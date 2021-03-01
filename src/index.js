@@ -19,12 +19,12 @@ const {
   projectAddFormSubmit,
   projectAddFormCancel,
   projectAddFormInput,
-  projectFieldValidation
+  projectFieldValidation,
 } = projectAddForm();
 
 const {
   projectAddBtnDiv,
-  btnAddProj
+  btnAddProj,
 } = projectAddBtn();
 
 const {
@@ -71,7 +71,7 @@ const addProject = () => {
 const taskContainer = (currentProject) => {
   contentTask.innerHTML = '';
   contentTask.append(taskDisplay(currentProject));
-}
+};
 
 const btnAddTask = () => {
   const taskNewBtnSelect = document.getElementById('showNewTaskForm');
@@ -91,12 +91,12 @@ const showAddTaskForm = (action) => {
 };
 
 const TaskValues = (task, description, date, priority) => {
-    return {
-      task,
-      description,
-      date,
-      priority,
-    }
+  return {
+    task,
+    description,
+    date,
+    priority,
+  }
 };
 
 const clearProjectForm = () => {
@@ -142,8 +142,8 @@ const selectProject = (e) => {
 };
 
 const clickEachProject = () => {
-  let projectListBtns = document.getElementsByClassName('btn-List');
-  let projectListBtnsArr = Object.values(projectListBtns);
+  const projectListBtns = document.getElementsByClassName('btn-List');
+  const projectListBtnsArr = Object.values(projectListBtns);
   projectListBtnsArr.forEach(item => {
       item.addEventListener('click', selectProject);
   });
@@ -170,7 +170,7 @@ const taskItemEdit = (e) => {
   const editElement = e.target;
   const editkey = editElement.getAttribute('key');
   const editPos = editElement.getAttribute('position');
-  let taskValues = JSON.parse(localStorage.getItem(editkey));
+  conat taskValues = JSON.parse(localStorage.getItem(editkey));
   showAddTaskForm('Edit Task');
   taskAddInput1.value = taskValues[+editPos].task;
   taskAddInput2.value = taskValues[+editPos].description;
