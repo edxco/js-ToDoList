@@ -41,7 +41,9 @@ const closeAddProjectForm = () => {
 const showAddProjectForm = () => {
     const showAddProjectF = document.getElementById('project-AddBtn');
     taskAddSubmit.textContent = 'Add Task';
-    console.log('Im adding the buttin Add Task')
+    if (taskAddSubmit.textContent === 'Add Task') {
+        clearProjectForm();
+    }
     showAddProjectF.append(projectAddFormDiv);
     showHide(projectAddFormDiv);
 };
@@ -64,16 +66,19 @@ const taskContainer = (currentProject) => {
 
 const btnAddTask = () => {
     const taskNewBtnSelect = document.getElementById('showNewTaskForm');
-    taskNewBtnSelect.addEventListener('click', showAddTaskForm);
+    taskNewBtnSelect.addEventListener('click', function () {
+        showAddTaskForm('Add Task')
+    });
 }
 
-const showAddTaskForm = () => {
+const showAddTaskForm = (action) => {
     const showAddProjectF = document.getElementById('taskFormDisplay');
-    taskAddSubmit.textContent = 'Add Task';
-console.log('Change button label')
+    taskAddSubmit.textContent = action;
     showAddProjectF.append(taskAddFormDiv);
     showHide(showAddProjectF);
-
+    if (taskAddSubmit.textContent === 'Add Task') {
+        clearProjectForm();
+    }
 };
 
 const TaskValues = (task, description, date, priority) => {
@@ -90,7 +95,7 @@ const clearProjectForm = () => {
     taskAddInput2.value = '';
     taskAddInput3.value = '';
     taskAddSelect.value = 'Important';
-    
+
 }
 
 const taskAddNew = () => {
@@ -100,17 +105,27 @@ const taskAddNew = () => {
     } else {
         taskObj = JSON.parse(localStorage.getItem(currentProject));
     }
-    console.log('taskObj', taskObj)
-    let task = TaskValues(taskAddInput1.value, taskAddInput2.value, taskAddInput3.value, taskAddSelect.value);
-    console.log('task', task)
-    taskObj.push(task);
-    console.log('taskObj after push', taskObj)
-    localStorage.setItem(currentProject, JSON.stringify(taskObj));
-    clearProjectForm();
-    taskContainer(currentProject);
-    btnAddTask();
-    taskDelBtn();
-    taskEditBtn();
+    console.log(taskAddSubmit.textContent)
+
+
+    if (taskAddSubmit.textContent === 'Edit Task') {
+        console.log('Do stuff for edit task')
+    } else {
+        console.log('Do stuff for add task')
+        // console.log('taskObj', taskObj)
+        // let task = TaskValues(taskAddInput1.value, taskAddInput2.value, taskAddInput3.value, taskAddSelect.value);
+        // console.log('task', task)
+        // taskObj.push(task);
+        // console.log('taskObj after push', taskObj)
+        // localStorage.setItem(currentProject, JSON.stringify(taskObj));
+        // clearProjectForm();
+        // taskContainer(currentProject);
+        // btnAddTask();
+        // taskDelBtn();
+        // taskEditBtn();
+    }
+
+
 };
 
 const selectProject = (e) => {
@@ -150,16 +165,13 @@ const taskItemEdit = (e) => {
     const editElement = e.target;
     const editkey = editElement.getAttribute('key');
     const editPos = editElement.getAttribute('position');
-    taskAddSubmit.textContent = 'Edit Task';
-    console.log('Change button label')
+
     let taskValues = JSON.parse(localStorage.getItem(editkey));
-    showAddTaskForm();
+    showAddTaskForm('Edit Task');
     taskAddInput1.value = taskValues[+editPos].task;
     taskAddInput2.value = taskValues[+editPos].description;
     taskAddInput3.value = taskValues[+editPos].date;
     taskAddSelect.value = taskValues[+editPos].priority;
-
-
 
     // let existingEntries = JSON.parse(localStorage.getItem(delkey));
     // existingEntries.splice(deletePos, 1);
@@ -182,7 +194,6 @@ const taskDelBtn = () => {
 const taskEditBtn = () => {
     let editBtnTask = document.getElementsByClassName('editBtnTask');
     let buttonsEditTask = Object.values(editBtnTask);
-    console.log(buttonsEditTask)
     buttonsEditTask.forEach(element => {
         element.addEventListener('click', taskItemEdit);
     });
