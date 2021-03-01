@@ -170,7 +170,7 @@ const taskItemEdit = (e) => {
   const editElement = e.target;
   const editkey = editElement.getAttribute('key');
   const editPos = editElement.getAttribute('position');
-  conat taskValues = JSON.parse(localStorage.getItem(editkey));
+  const taskValues = JSON.parse(localStorage.getItem(editkey));
   showAddTaskForm('Edit Task');
   taskAddInput1.value = taskValues[+editPos].task;
   taskAddInput2.value = taskValues[+editPos].description;
