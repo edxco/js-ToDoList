@@ -43,6 +43,8 @@ const taskAddForm = () => {
     div_select1.className = 'relative mt-0.5';
     const taskAddSelect = document.createElement('select');
     taskAddSelect.className = 'rounded border appearance-none border-gray-300 py-2 focus:outline-none focus:ring-2 focus:ring-indigo-200 focus:border-indigo-500 text-base pl-3 pr-10';
+    const defaultOpt = document.createElement('option');
+    defaultOpt.textContent = 'Please select';
     const option1 = document.createElement('option');
     option1.textContent = 'Important';
     const option2 = document.createElement('option');
@@ -70,7 +72,7 @@ const taskAddForm = () => {
     div9.append(label2, div_select);
     div_select.append(div_select1);
     div_select1.append(taskAddSelect, span_select);
-    taskAddSelect.append(option1, option2, option3);
+    taskAddSelect.append(defaultOpt, option1, option2, option3);
     btnDiv.append(taskAddSubmit);
 
     return {

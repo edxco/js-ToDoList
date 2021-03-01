@@ -51,20 +51,20 @@ const showAddProjectForm = () => {
 };
 
 const addProject = () => {
+    projectFieldValidation.innerHTML = '';
     let name = projectAddFormInput.value;
     let x = projectAddFormValidation(name);
-    console.log('x: ', x, typeof x)
-    if (x != '') {
+    if (x === undefined) {
+        localStorage.setItem(name, '');
+        projectAddFormDiv.style.display = 'none';
+        projectAddFormInput.value = '';
+
+        projectListCont.innerHTML = '';
+        projectListCont.append(projectList());
+        clickEachProject();
+    } else {
         projectFieldValidation.textContent = `${x}`;
         showHide(projectFieldValidation);
-    } else {
-    localStorage.setItem(name, '');
-    projectAddFormDiv.style.display = 'none';
-    projectAddFormInput.value = '';
-
-    projectListCont.innerHTML = '';
-    projectListCont.append(projectList());
-    clickEachProject();
     }
 };
 
