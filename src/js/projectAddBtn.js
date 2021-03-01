@@ -2,11 +2,10 @@
 import down from '../img/chevron-down.png';
 import plus from '../img/plus.png';
 
-const projectMenu = () => { 
+const projectAddBtn = () => { 
 
-    const projectMenuDiv = document.createElement('div');
-    projectMenuDiv.className = 'antialiased w-full';
-    projectMenuDiv.id = 'listProjectDiv';
+    const projectAddBtnDiv = document.createElement('div');
+    projectAddBtnDiv.className = 'antialiased w-full';
 
     const btnAddProj = document.createElement('div');
     btnAddProj.className = 'flex flex-row w-4/5 items-center bg-white hover:bg-gray-300 h-10 my-5 cursor-pointer';
@@ -22,29 +21,14 @@ const projectMenu = () => {
     imagePlus.className = 'mx-5';
     imagePlus.src = plus;
 
-    const listProj = document.createElement('ul');
-    listProj.className = 'list-disc list-inside mt-7 ml-8 text-lg';
-    listProj.id = 'btnList';
-
-    for (let i = 0; i < localStorage.length; i += 1) {
-        const key = localStorage.key(i);
-        let li = document.createElement('li');
-        li.className = 'cursor-pointer mt-1 btnListPro text-blue-900';
-        li.id = localStorage.key(i);
-        li.textContent = `${key}` //Put the varable of localstorage to loop here
-
-        listProj.append(li);
-    }
-
-    projectMenuDiv.append(btnAddProj, listProj)
-    
+    projectAddBtnDiv.append(btnAddProj);    
     btnAddProj.append(div_down, div_title, imagePlus);
     div_down.append(imageDown);
 
     return {
-        projectMenuDiv,
+        projectAddBtnDiv,
         btnAddProj
     }
 }
 
-export default projectMenu;
+export default projectAddBtn;
