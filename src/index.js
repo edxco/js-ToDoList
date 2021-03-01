@@ -10,6 +10,8 @@ import taskAddForm from './js/taskAddForm';
 
 // Global variables
 let currentProject;
+let currentTaskPosition;
+let currentTasKey;
 
 // Destructuring JS modules
 let {
@@ -98,7 +100,13 @@ const clearProjectForm = () => {
 
 }
 
+const storage = (arr, key, input) => {
+  arr.push(input);
+  localStorage.setItem(key, JSON.stringify(arr));
+}
+
 const taskAddNew = () => {
+    let task = TaskValues(taskAddInput1.value, taskAddInput2.value, taskAddInput3.value, taskAddSelect.value);
     let taskObj;
     if (localStorage.getItem(currentProject) === '') {
         taskObj = [];
@@ -109,21 +117,17 @@ const taskAddNew = () => {
 
 
     if (taskAddSubmit.textContent === 'Edit Task') {
-        console.log('Do stuff for edit task')
+        taskObj.splice(currentTaskPosition, 1);
+        console.log(localStorage.removeItem(currentTasKey));
+        storage(taskObj, currentTasKey, task)
     } else {
-        console.log('Do stuff for add task')
-        console.log('taskObj', taskObj)
-        let task = TaskValues(taskAddInput1.value, taskAddInput2.value, taskAddInput3.value, taskAddSelect.value);
-        console.log('task', task)
-        taskObj.push(task);
-        console.log('taskObj after push', taskObj)
-        localStorage.setItem(currentProject, JSON.stringify(taskObj));
-        clearProjectForm();
-        taskContainer(currentProject);
-        btnAddTask();
-        taskDelBtn();
-        taskEditBtn();
+        storage(taskObj, currentProject, task)
     }
+    clearProjectForm();
+    taskContainer(currentProject);
+    btnAddTask();
+    taskDelBtn();
+    taskEditBtn();
 };
 
 const selectProject = (e) => {
@@ -170,6 +174,8 @@ const taskItemEdit = (e) => {
     taskAddInput2.value = taskValues[+editPos].description;
     taskAddInput3.value = taskValues[+editPos].date;
     taskAddSelect.value = taskValues[+editPos].priority;
+    currentTaskPosition = editPos;
+    currentTasKey = editkey;
 
     // let existingEntries = JSON.parse(localStorage.getItem(delkey));
     // existingEntries.splice(deletePos, 1);
