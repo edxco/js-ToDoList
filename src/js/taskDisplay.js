@@ -45,15 +45,15 @@ const taskDisplay = (currentProject) => {
             const taskLeft1 = document.createElement('div');
             taskLeft1.className = 'flex flex-col md:flex-row self-center';
             const status1 = document.createElement('div');
-            status1.className = `${color[0]}`;
+            status1.className = `self-center rounded-full mb-1 h-4 w-4 ml-1 md:ml-3 mr-1.5 border ${color[0]}`;
             const status2 = document.createElement('div');
-            status2.className = `${color[1]}`;
+            status2.className = `w-10 self-center font-semibold text-xs h-5 hidden md:block md:mr-10 ${color[1]}`;
             status2.textContent = storage[i].priority;
 
             const taskLeft2 = document.createElement('div');
             taskLeft2.className = 'flex-col w-40 md:w-96'
             const task2 = document.createElement('div');
-            task2.className = 'text-gray-500'
+            task2.className = `${color[1]}`;
             const task2p = document.createElement('p');
             task2p.className = 'truncate text-lg font-semibold';
             task2p.textContent = storage[i].task;
@@ -102,16 +102,16 @@ const changeColor = (priority) => {
     let color = [];
     switch (priority) {
         case 'Important':
-            color[0] = 'self-center rounded-full mb-1 h-4 w-4 bg-red-100 ml-1 md:ml-3 mr-1.5 border border-red-600';
-            color[1] = 'w-10 self-center font-semibold text-red-800 text-xs h-5 hidden md:block md:mr-10';
+            color[0] = 'border-red-600 bg-red-100';
+            color[1] = 'text-red-600';
             return color;
         case 'Normal':
-            color[0] = 'self-center rounded-full mb-1 h-4 w-4 bg-green-100 ml-1 md:ml-3 mr-1.5 border border-green-600';
-            color[1] = 'w-10 self-center font-semibold text-green-800 text-xs h-5 hidden md:block md:mr-10';
+            color[0] = 'border-green-600 bg-green-100';
+            color[1] = 'text-green-800';
             return color;
         case 'Low':
-            color[0] = 'self-center rounded-full mb-1 h-4 w-4 border border-gray-900 bg-gray-100 ml-1 md:ml-3 mr-1.5';
-            color[1] = 'w-10 self-center font-semibold text-gray-900 text-xs h-5 hidden md:block md:mr-10';
+            color[0] = 'border-gray-900 bg-gray-100';
+            color[1] = 'text-gray-900';
             return color;
     }
 }

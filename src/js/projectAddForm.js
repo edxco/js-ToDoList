@@ -15,6 +15,11 @@ const projectAddForm = () => {
     projectAddFormInput.setAttribute('type', 'text');
     projectAddFormInput.className = 'addProjectInput';
 
+    const projectFieldValidation = document.createElement('div');
+    projectFieldValidation.className = 'bg-yellow-100 font-light font-xs text-center rounded mb-3 p-2 text-gray-600';
+    projectFieldValidation.setAttribute('style', 'display: none');
+    //projectFieldValidation.textContent = 'Warning! You did something wrong!!!'
+
     const projectAddFormSubmit = document.createElement('button');
     projectAddFormSubmit.className = 'bg-blue-600 hover:bg-blue-700 addProjectBtn mb-3';
     projectAddFormSubmit.textContent = 'Add Project';
@@ -26,14 +31,15 @@ const projectAddForm = () => {
     projectAddFormCancel.setAttribute('type', 'button');
 
     projectAddFormDiv.append(form);
-    form.append(div1, projectAddFormSubmit, projectAddFormCancel);
+    form.append(div1, projectFieldValidation, projectAddFormSubmit, projectAddFormCancel);
     div1.append(projectAddFormInput);
 
     return {
         projectAddFormDiv,
         projectAddFormSubmit,
         projectAddFormCancel,
-        projectAddFormInput
+        projectAddFormInput,
+        projectFieldValidation
     };
 
 }
