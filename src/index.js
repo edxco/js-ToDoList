@@ -9,11 +9,15 @@ import taskAddForm from './js/taskAddForm';
 import projectAddFormValidation from './js/projectAddFormValidation';
 import taskAddFormValidation from './js/taskAddFormValidation';
 import taskConfirmDelete from './js/taskConfirmDelete';
+import defaultValues from './js/defaultValues';
 
 // Global variables
 let currentProject;
 let currentTaskPosition;
 let currentTasKey;
+
+// Default project
+defaultValues();
 
 // Grab an especific element from HTML
 const [projectAddBtnCont, projectListCont, contentTask] = ['project-AddBtn', 'project-List', 'content-Task'].map(id => document.getElementById(id));
@@ -42,7 +46,6 @@ const {
   taskValidationForm,
 } = taskAddForm();
 
-// functions
 const taskContainer = (currentProject) => {
   contentTask.innerHTML = '';
   contentTask.append(taskDisplay(currentProject));
@@ -138,6 +141,7 @@ const taskAddNew = () => {
   const [i1, i2, i3, select] = [taskIn1.value, taskIn2.value, taskIn3.value, taskAddSelect.value];
   const task = TaskValues(i1, i2, i3, select);
   let taskObj;
+
   if (localStorage.getItem(currentProject) === '') {
     taskObj = [];
   } else {
@@ -145,7 +149,7 @@ const taskAddNew = () => {
   }
 
   const msgError = taskAddFormValidation(currentProject, i1, i2, i3, select);
-
+  console.log('task', task, 'taskObj', taskObj)
   if (taskAddSubmit.textContent === 'Edit Task') {
     taskObj.splice(currentTaskPosition, 1);
     storage(taskObj, currentTasKey, task);
