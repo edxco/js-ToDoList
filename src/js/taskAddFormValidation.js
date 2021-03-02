@@ -1,27 +1,26 @@
-const taskAddFormValidation = (currentProject, taskAddInput1, taskAddInput2, taskAddInput3, taskAddSelect) => {
-    let errorMsg = '';
+const taskAddFormValidation = (currentProj, input1, input2, input3, select) => {
+  let errorMsg = '';
 
-    let compare = localStorage.getItem(currentProject);
+  let compare = localStorage.getItem(currentProj);
 
-    if (compare === '') {
-        errorMsg = ''
-    } else {
-        compare = JSON.parse(localStorage.getItem(currentProject));
-        console.log('compare', compare)
+  if (compare === '') {
+    errorMsg = '';
+  } else {
+    compare = JSON.parse(localStorage.getItem(currentProj));
+  }
+
+  for (let i = 0; i < compare.length; i += 1) {
+    if (compare[i].task === input1) {
+      errorMsg = `There is already a task named '${input1}'`;
+      break;
     }
+  }
 
-    for (var i = 0; i < compare.length; ++i) {
-        if (compare[i].task === taskAddInput1) {
-            errorMsg = `There is already a task named ${taskAddInput1}`
-            break;
-        }
-    }
+  if (input1 === '' || input2 === '' || input3 === '' || select === '') {
+    errorMsg = 'There is one input empty, Please check';
+  }
 
-    if (taskAddInput1 === '' || taskAddInput2 === '' || taskAddInput3 === '' || taskAddSelect === '') {
-        errorMsg = 'There is one input empty, Please check';
-    } 
-
-    return errorMsg
-}
+  return errorMsg;
+};
 
 export default taskAddFormValidation;

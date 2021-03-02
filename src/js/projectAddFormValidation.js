@@ -1,21 +1,21 @@
 const projectAddFormValidation = (input) => {
-    let errorMsg = '';
-    let keysInStorage = [];
-    let flag = false;
-
-    for (var i = 0, len = localStorage.length; i < len; ++i) {
-        keysInStorage.push(localStorage.key(i));
-        if (keysInStorage[i] === input) {
-            flag = true;
-            break;
-        }
+  const keysInStorage = [];
+  let msgError;
+  let flag = false;
+  for (let i = 0, len = localStorage.length; i < len; i += 1) {
+    keysInStorage.push(localStorage.key(i));
+    if (keysInStorage[i] === input) {
+      flag = true;
+      break;
     }
+  }
+  if (input === '') {
+    msgError = 'Please add a name project';
+  } if (flag === true) {
+    msgError = `Duplicate name: '${input}' already in project list`;
+  }
 
-    if (input === '') {
-        return 'Please add a name project';
-    } else if (flag === true) {
-        return `Duplicate name: '${input}' already in project list`;
-    }
-}
+  return msgError;
+};
 
 export default projectAddFormValidation;

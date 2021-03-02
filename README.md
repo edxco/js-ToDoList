@@ -41,3 +41,22 @@ Access the folder where you cloned the project in your explorer and open index.h
 - Linkedin: [linkedin] (https://www.linkedin.com/in/kingsley-ibeh)
 
 ## 🤝 Contributing
+<<<<<<< HEAD
+=======
+
+Contributions, issues and feature requests are welcome!
+Feel free to check the issues page.
+
+## Show your support
+
+Give a ⭐️ if you like this project!
+
+## Acknowledgments
+
+- [Microverse](https://www.microverse.org/).
+- [The Odin Project](https://www.theodinproject.com/).
+
+## 📝 License
+
+This project is [MIT licensed](https://github.com/chubaquelo/re-former/blob/form/LICENSE).
+>>>>>>> ec7d7c447a8aa2a8a8a5c614c11b38c2a1453f4e
