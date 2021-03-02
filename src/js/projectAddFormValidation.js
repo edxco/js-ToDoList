@@ -1,5 +1,3 @@
-import projectAddForm from "./projectAddForm"
-
 const projectAddFormValidation = (input) => {
     let errorMsg = '';
     let keysInStorage = [];

@@ -1,6 +1,14 @@
 const taskAddForm = () => {
     const taskAddFormDiv = document.createElement('div');
-    taskAddFormDiv.className = 'flex flex-wrap -m-2';
+
+    const taskValidationForm = document.createElement('div');
+    taskValidationForm.className = 'bg-yellow-100 my-4 rounded text-gray-600 p-2 text-center font-light';
+    taskValidationForm.setAttribute('style', 'display: none');
+    // taskValidationForm.textContent = 'Error Message';
+
+    const taskAddFormDiv1 = document.createElement('div');
+    taskAddFormDiv1.className = 'flex flex-wrap -m-2';
+
     const divInput = document.createElement('div');
     divInput.className = 'p-2 w-1/2';
     const div3 = document.createElement('div');
@@ -43,8 +51,11 @@ const taskAddForm = () => {
     div_select1.className = 'relative mt-0.5';
     const taskAddSelect = document.createElement('select');
     taskAddSelect.className = 'rounded border appearance-none border-gray-300 py-2 focus:outline-none focus:ring-2 focus:ring-indigo-200 focus:border-indigo-500 text-base pl-3 pr-10';
-    const defaultOpt = document.createElement('option');
-    defaultOpt.textContent = 'Please select';
+    const option = document.createElement('option');
+    option.setAttribute('selected', '');
+    option.setAttribute('disabled', '');
+    option.setAttribute('hidden', '');
+    option.textContent = 'Select Priority';
     const option1 = document.createElement('option');
     option1.textContent = 'Important';
     const option2 = document.createElement('option');
@@ -61,7 +72,8 @@ const taskAddForm = () => {
     taskAddSubmit.className = 'btnAddTask';
     //taskAddSubmit.textContent = 'Add Task';
 
-    taskAddFormDiv.append(divInput, divInput1, divInput2, divInput3, btnDiv);
+    taskAddFormDiv.append(taskValidationForm, taskAddFormDiv1);
+    taskAddFormDiv1.append(divInput, divInput1, divInput2, divInput3, btnDiv);
     divInput.append(div3);
     div3.append(taskAddInput1);
     divInput1.append(div5);
@@ -72,7 +84,7 @@ const taskAddForm = () => {
     div9.append(label2, div_select);
     div_select.append(div_select1);
     div_select1.append(taskAddSelect, span_select);
-    taskAddSelect.append(defaultOpt, option1, option2, option3);
+    taskAddSelect.append(option, option1, option2, option3);
     btnDiv.append(taskAddSubmit);
 
     return {
@@ -82,6 +94,7 @@ const taskAddForm = () => {
         taskAddInput3,
         taskAddSelect,
         taskAddSubmit,
+        taskValidationForm
     }
 }
 

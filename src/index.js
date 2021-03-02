@@ -8,9 +8,12 @@ import taskNoSelection from './js/taskNoSelection';
 import taskDisplay from './js/taskDisplay';
 import taskAddForm from './js/taskAddForm';
 import projectAddFormValidation from './js/projectAddFormValidation';
+import taskAddFormValidation from './js/taskAddFormValidation';
 
 // Global variables
 let currentProject;
+let currentTaskPosition;
+let currentTasKey;
 
 // Destructuring JS modules
 let {
@@ -32,7 +35,8 @@ let {
     taskAddInput2,
     taskAddInput3,
     taskAddSelect,
-    taskAddSubmit
+    taskAddSubmit,
+    taskValidationForm
 } = taskAddForm();
 
 //functions
@@ -103,37 +107,76 @@ const clearProjectForm = () => {
     taskAddInput1.value = '';
     taskAddInput2.value = '';
     taskAddInput3.value = '';
-    taskAddSelect.value = 'Important';
-
+    taskAddSelect.value = 'Select Priority';
 }
 
 const taskAddNew = () => {
+    const [input1, input2, input3, select] = [taskAddInput1.value, taskAddInput2.value, taskAddInput3.value, taskAddSelect.value];
+    const task = TaskValues(input1, input2, input3, select);
     let taskObj;
     if (localStorage.getItem(currentProject) === '') {
         taskObj = [];
     } else {
         taskObj = JSON.parse(localStorage.getItem(currentProject));
     }
-    console.log(taskAddSubmit.textContent)
 
+    let msgError = taskAddFormValidation(currentProject, input1, input2, input3, select);
+    console.log(msgError)
 
     if (taskAddSubmit.textContent === 'Edit Task') {
-        console.log('Do stuff for edit task')
-    } else {
-        console.log('Do stuff for add task')
-        console.log('taskObj', taskObj)
-        let task = TaskValues(taskAddInput1.value, taskAddInput2.value, taskAddInput3.value, taskAddSelect.value);
-        console.log('task', task)
-        taskObj.push(task);
-        console.log('taskObj after push', taskObj)
-        localStorage.setItem(currentProject, JSON.stringify(taskObj));
+        console.log('Inside If')
+        taskObj.splice(currentTaskPosition, 1);
+        storage(taskObj, currentTasKey, task)
         clearProjectForm();
         taskContainer(currentProject);
-        btnAddTask();
-        taskDelBtn();
-        taskEditBtn();
+    } else if (msgError === undefined || msgError === '') {
+        storage(taskObj, currentProject, task);
+        clearProjectForm();
+        taskContainer(currentProject);
+    } else {
+        taskValidationForm.textContent = `${msgError}`
+        showHide(taskValidationForm);
+        
     }
+
+    btnAddTask();
+    taskDelBtn();
+    taskEditBtn();
 };
+
+
+// const taskAddNew = () => {
+//     let taskObj;
+//     if (localStorage.getItem(currentProject) === '') {
+//         taskObj = [];
+//     } else {
+//         taskObj = JSON.parse(localStorage.getItem(currentProject));
+//     }
+//     console.log(taskAddSubmit.textContent)
+
+
+//     if (taskAddSubmit.textContent === 'Edit Task') {
+//         console.log('Do stuff for edit task')
+//     } else {
+//         console.log('Do stuff for add task')
+//         console.log('taskObj', taskObj)
+//         let task = TaskValues(taskAddInput1.value, taskAddInput2.value, taskAddInput3.value, taskAddSelect.value);
+//         console.log('task', task)
+//         taskObj.push(task);
+//         console.log('taskObj after push', taskObj)
+//         localStorage.setItem(currentProject, JSON.stringify(taskObj));
+//         clearProjectForm();
+//         taskContainer(currentProject);
+//         btnAddTask();
+//         taskDelBtn();
+//         taskEditBtn();
+//     }
+// };
+
+const storage = (arr, key, input) => {
+    arr.push(input);
+    localStorage.setItem(key, JSON.stringify(arr));
+}
 
 const selectProject = (e) => {
     currentProject = e.target.id;
@@ -168,7 +211,6 @@ const taskItemDelete = (e) => {
 }
 
 const taskItemEdit = (e) => {
-    console.log('Im in Edit')
     const editElement = e.target;
     const editkey = editElement.getAttribute('key');
     const editPos = editElement.getAttribute('position');
@@ -179,6 +221,9 @@ const taskItemEdit = (e) => {
     taskAddInput2.value = taskValues[+editPos].description;
     taskAddInput3.value = taskValues[+editPos].date;
     taskAddSelect.value = taskValues[+editPos].priority;
+
+    currentTaskPosition = editPos;
+    currentTasKey = editkey;
 
     // let existingEntries = JSON.parse(localStorage.getItem(delkey));
     // existingEntries.splice(deletePos, 1);
