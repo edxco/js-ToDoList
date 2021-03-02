@@ -4,7 +4,6 @@ const taskAddForm = () => {
   const taskValidationForm = document.createElement('div');
   taskValidationForm.className = 'bg-yellow-100 my-4 rounded text-gray-600 p-2 text-center font-light';
   taskValidationForm.setAttribute('style', 'display: none');
-  // taskValidationForm.textContent = 'Error Message';
 
   const taskAddFormDiv1 = document.createElement('div');
   taskAddFormDiv1.className = 'flex flex-wrap -m-2';

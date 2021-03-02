@@ -7,7 +7,6 @@ const taskDisplay = (currentProject) => {
 
   const div11 = document.createElement('div');
   div11.className = '-my-8 divide-y-2 divide-gray-100';
-  // div11.id = 'taskListContainer';
 
   const btnNewTask = document.createElement('button');
   btnNewTask.className = 'w-full text-white bg-blue-500 py-2 px-6 focus:outline-none hover:bg-blue-600 rounded text-lg';
