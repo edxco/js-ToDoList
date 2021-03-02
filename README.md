@@ -12,7 +12,7 @@
 - localStorage
 
 ## Live Demo
-[Live Demo](https://edxco.github.io/js-library/)
+[Live Demo](https://edxco.github.io/js-ToDoList/)
 
 ## Getting Started
 
