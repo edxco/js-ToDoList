@@ -1,15 +1,23 @@
 # BooksLibrary-JS-Practice
 
-> In this project we built an app that can help you plan your day, week, month and even year. 
+### In this project we built an app that can help you plan your daily activites by project using localStorage: 
 
-## Built With
+- Add a project
+- Add tasks to each project
+- Delete and edit tasks
 
-- HTML
-- CSS
+### It has the following features:
+
+- When deleting it ask for confirmation
+- Validates duplicate name project and task name
+- Build custom modal
+
+# Built With
+
+- HTML5 & CSS
 - Vanilla JavaScript
 - Webpack
-- tailwind css
-- localStorage
+- TailwindCss
 
 ## Live Demo
 [Live Demo](https://edxco.github.io/js-ToDoList/)
@@ -24,7 +32,14 @@ Clone this repository in your computer
 ```
 $  git clone https://github.com/edxco/js-ToDoList.git
 ```
-Access the folder where you cloned the project in your explorer and open index.html
+
+1. Go to the main page.
+2. Press the "Code" button and get the repo link.
+3. Clone it using git command "git clone".
+4. Open in terminal the folder just cloned.
+5. Run in terminal 'npm install' to install dependecies
+6. To see it locally run 'npm run build'.
+7. You can visualize the project by opening index.html in the dist folder.
 
 ## Authors
 
@@ -41,8 +56,6 @@ Access the folder where you cloned the project in your explorer and open index.h
 - Linkedin: [linkedin] (https://www.linkedin.com/in/kingsley-ibeh)
 
 ## 🤝 Contributing
-<<<<<<< HEAD
-=======
 
 Contributions, issues and feature requests are welcome!
 Feel free to check the issues page.
@@ -59,4 +72,3 @@ Give a ⭐️ if you like this project!
 ## 📝 License
 
 This project is [MIT licensed](https://github.com/chubaquelo/re-former/blob/form/LICENSE).
->>>>>>> ec7d7c447a8aa2a8a8a5c614c11b38c2a1453f4e
