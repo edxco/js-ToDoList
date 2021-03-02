@@ -9,7 +9,7 @@ module.exports = {
     path: path.resolve(__dirname, 'dist'),
   },
   performance: {
-    hints: false
+    hints: false,
   },
   module: {
     rules:
