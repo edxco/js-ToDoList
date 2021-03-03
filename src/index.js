@@ -149,7 +149,6 @@ const taskAddNew = () => {
   }
 
   const msgError = taskAddFormValidation(currentProject, i1, i2, i3, select);
-  console.log('task', task, 'taskObj', taskObj)
   if (taskAddSubmit.textContent === 'Edit Task') {
     taskObj.splice(currentTaskPosition, 1);
     storage(taskObj, currentTasKey, task);
