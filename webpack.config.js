@@ -1,14 +1,18 @@
 const path = require('path');
+
 module.exports = {
   mode: 'development',
   devtool: 'inline-source-map',
   entry: './src/index.js',
-   output: {
+  output: {
     filename: 'bundle.js',
     path: path.resolve(__dirname, 'dist'),
   },
+  performance: {
+    hints: false,
+  },
   module: {
-    rules: 
+    rules:
     [
       {
         test: /\.css$/,
@@ -28,6 +32,6 @@ module.exports = {
           },
         },
       },
-    ]
-  }
-}
+    ],
+  },
+};
