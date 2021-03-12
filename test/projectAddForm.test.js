@@ -13,9 +13,9 @@ test('Confirms that projectAddFormDiv is an object', () => {
 });
 
 test('Confirms that projectAddFormDiv does not return any other thing other than object ',
-     () => {
-  expect(typeof projectAddFormDiv).not.toBe('string');
-});
+  () => {
+    expect(typeof projectAddFormDiv).not.toBe('string');
+  });
 
 test('Confirms that projectAddFormDiv style attribute is display', () => {
   expect(projectAddFormDiv.getAttribute('style')).toBe('display: none');
@@ -26,9 +26,9 @@ test('Confirms that projectAddFormSubmit is an object', () => {
 });
 
 test('Confirms that projectAddFormSubmit does not return any other thing other than object ',
-     () => {
-  expect(typeof projectAddFormSubmit).not.toBe('string');
-});
+  () => {
+    expect(typeof projectAddFormSubmit).not.toBe('string');
+  });
 
 test('Confirms that projectAddFormDiv type attribute is button', () => {
   expect(projectAddFormSubmit.getAttribute('type')).toBe('button');
@@ -43,9 +43,9 @@ test('Confirms that projectAddFormCancel is an object', () => {
 });
 
 test('Confirms that projectAddFormCancel does not return any other thing other than object ',
-     () => {
-  expect(typeof projectAddFormCancel).not.toBe('string');
-});
+  () => {
+    expect(typeof projectAddFormCancel).not.toBe('string');
+  });
 
 test('Confirms that projectAddFormCancel type attribute is button', () => {
   expect(projectAddFormCancel.getAttribute('type')).toBe('button');
@@ -60,9 +60,9 @@ test('Confirms that projectAddFormInput is an object', () => {
 });
 
 test('Confirms that projectAddFormInput does not return any other thing other than object ',
-     () => {
-  expect(typeof projectAddFormInput).not.toBe('string');
-});
+  () => {
+    expect(typeof projectAddFormInput).not.toBe('string');
+  });
 
 test('Confirms that projectAddFormInput type attribute is text', () => {
   expect(projectAddFormInput.getAttribute('type')).toBe('text');
@@ -85,9 +85,9 @@ test('Confirms that projectFieldValidation is an object', () => {
 });
 
 test('Confirms that projectFieldValidation does not return any other thing other than object ',
-     () => {
-  expect(typeof projectFieldValidation).not.toBe('string');
-});
+  () => {
+    expect(typeof projectFieldValidation).not.toBe('string');
+  });
 
 test('Confirms that projectFieldValidation style attribute is display: none class', () => {
   expect(projectFieldValidation.getAttribute('style')).toBe('display: none');
