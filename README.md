@@ -41,6 +41,10 @@ $  git clone https://github.com/edxco/js-ToDoList.git
 6. To see it locally run 'npm run build'.
 7. You can visualize the project by opening index.html in the dist folder.
 
+# To Run Test
+
+Run `npm run test` on the terminal.
+
 ## Authors
 
 👤 **Eduardo Baeza**
